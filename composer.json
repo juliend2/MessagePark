@@ -1,0 +1,13 @@
+{
+  "autoload": {
+    "psr-4": {
+      "MessagePark\\": "src/MessagePark/"
+    },
+    "files": [
+      "src/MessagePark/Functions.php"
+    ]
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^12.1"
+  }
+}
