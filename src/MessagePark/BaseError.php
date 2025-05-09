@@ -2,7 +2,7 @@
 
 namespace MessagePark;
 
-use MessagePark\BaseObject;
+use MessagePark\BaseClass;
 
-class BaseError extends BaseObject {}
+class BaseError extends BaseClass {}
 
