@@ -3,7 +3,7 @@
 namespace MessagePark;
 
 use MessagePark\TypeDetector;
-use MessagePark\MethodMissingError;
+use MessagePark\Exceptions\MethodMissingException;
 use MessagePark\BaseClass;
 use MessagePark\Types\IntegerClass;
 use MessagePark\Types\FloatClass;
@@ -15,7 +15,7 @@ use MessagePark\Types\FloatClass;
 //   if (is_integer($object)) {
 //     return send_message_to_integer($object, $message_name, $params);
 //   }
-//   throw new MethodMissingError("Unsupported type for '$object'.");
+//   throw new MethodMissingException("Unsupported type for '$object'.");
 // }
 
 function send_message_to_integer(int $object, $message_name, $params) {
@@ -27,7 +27,7 @@ function o($primitive) {
   $detector = new TypeDetector();
   return match ($detector->detect($primitive)) {
     'INT' => new IntegerClass($primitive),
-    'FLOAT' => new FloatClass($primitive),
+    'FLOAT', 'DOUBLE' => new FloatClass($primitive),
     'BASECLASS' => $primitive, // NOOP
     default => null,
   };
