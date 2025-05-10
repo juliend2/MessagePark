@@ -21,7 +21,7 @@ trait Messageable {
     $this->methodMissing();
   }
 
-  function methodMissing() {
+  protected function methodMissing() {
     throw new MethodMissingException();
   }
 }
