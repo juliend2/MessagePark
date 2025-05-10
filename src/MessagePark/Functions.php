@@ -15,7 +15,7 @@ function send($object, $message_name, ...$params) {
   if (is_integer($object)) {
     return send_message_to_integer($object, $message_name, $params);
   }
-  return new MethodMissingError();
+  return new MethodMissingError("Unsupported type for '$object'.");
 }
 
 function send_message_to_integer(int $object, $message_name, $params) {

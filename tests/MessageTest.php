@@ -20,8 +20,15 @@ class FakeClass extends BaseClass {
 
 class MessageTest extends TestCase {
 
+  protected function assertIsSubclassOf($base_class_name, $value) {
+    $message = "Value ".var_export($value, true)." is not a subclass of '$base_class_name'.";
+    $truthiness = is_subclass_of($value, $base_class_name);
+    return $this->assertTrue($truthiness, $message);
+  }
+
   public function testMessage() {
     $this->assertEquals(4, send(2, '+', 2));
+    $this->assertIsSubclassOf(BaseError::class, send(2.1, '====', 2.1));
   }
 
   /*

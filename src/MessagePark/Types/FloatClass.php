@@ -6,8 +6,9 @@ use MessagePark\BaseClass;
 use function MessagePark\send;
 
 class FloatClass extends BaseClass {
-  function __call(string $message_name, array $arguments) {
-    return parent::__call($message_name, $arguments);
+  function send(string $message_name, ...$arguments) {
+    $method_name = Arithmetic::operatorTokenToMethodName($message_name);
+    return Arithmetic::$method_name($this->value, $arguments[0]);
   }
 }
 
