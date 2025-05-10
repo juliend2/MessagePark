@@ -12,4 +12,3 @@ class FloatClass extends BaseClass {
   }
 }
 
-
