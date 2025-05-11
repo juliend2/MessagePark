@@ -7,7 +7,7 @@ use MessagePark\BaseClass;
 use MessagePark\Exceptions\MethodMissingException;
 
 class SubClassThatSilencesMethodMissing extends BaseClass {
-  protected function methodMissing() {
+  protected function methodMissing($message_name, $arguments) {
     // NOOP
   }
 }

@@ -34,3 +34,12 @@ function o($primitive) {
   return new BaseObject($primitive);
 }
 
+/**
+ * Create an instance of a class, and use BaseClass as its proxy to it.
+ * Which we return;
+ */
+function construct($class_name, ...$arguments): BaseClass {
+  $wrapped_object = new $class_name(...$arguments);
+  return new BaseClass($wrapped_object);
+}
+

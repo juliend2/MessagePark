@@ -18,10 +18,16 @@ trait Messageable {
     // To override if needed
     /* echo $message_name; */
     /* echo implode(', ', $arguments); */
-    $this->methodMissing();
+    return $this->methodMissing($message_name, $arguments);
   }
 
-  protected function methodMissing() {
-    throw new MethodMissingException();
+  protected function methodMissing(string $message_name, array $arguments) {
+    // TODO: TURN IT BACK ON LATER:
+    //throw new MethodMissingException();
+    if (is_object($this->value) && method_exists($this->value, $message_name)) {
+      // we're wrapping another object, therefore let's try proxying this
+      // method to it:
+      return $this->value->$message_name(...$arguments);
+    }
   }
 }

@@ -1,4 +1,5 @@
 {
+  "name": "juliendesrosiers/messagepark",
   "autoload": {
     "psr-4": {
       "MessagePark\\": "src/MessagePark/"
